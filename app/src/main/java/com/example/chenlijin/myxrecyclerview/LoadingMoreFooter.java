@@ -64,7 +64,7 @@ public class LoadingMoreFooter extends LinearLayout {
                 mText.setText("加载完成");
                 mText.setVisibility(VISIBLE);
                 progressCon.setVisibility(GONE);
-                this.setVisibility(View.GONE);
+                this.setVisibility(VISIBLE);
                 break;
             default:
                 break;

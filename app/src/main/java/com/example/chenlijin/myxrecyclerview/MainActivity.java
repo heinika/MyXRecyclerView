@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements XRecyclerView.Loa
                     mXRecyclerViewChen.refreshComplete();
                     break;
                 case LOAD:
-                    mXRecyclerViewChen.loadMoreComplete();
+                    mXRecyclerViewChen.refreshComplete();
                     break;
                 default:
                     break;
@@ -57,11 +57,12 @@ public class MainActivity extends AppCompatActivity implements XRecyclerView.Loa
         mXRecyclerViewChen.setLayoutManager(layoutManager);
         mXRecyclerViewChen.startLayoutAnimation();
         mXRecyclerViewChen.setLoadingMoreEnabled(true);
+//        mXRecyclerViewChen.setLoadingMoreEnabled(false);
     }
 
     private void initData() {
         mBaseInfoList = new ArrayList<>();
-        for(int i=0;i<14;i++){
+        for(int i=0;i<12;i++){
             BaseInfo baseInfo = new BaseInfo();
             mBaseInfoList.add(baseInfo);
         }
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements XRecyclerView.Loa
                 mXRecyclerViewChen.startRefresh();
                 break;
             case R.id.button_stop:
-                mXRecyclerViewChen.stopRefresh();
+                mXRecyclerViewChen.refreshComplete();
                 break;
             default:
                 break;

@@ -148,7 +148,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
             public void run() {
                 reset();
             }
-        }, 500);
+        }, 200);
     }
 
     public void setVisiableHeight(int height) {
@@ -188,7 +188,6 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
         int height = getVisiableHeight();
         if (height == 0) // not visible.
             isOnRefresh = false;
-
         if (getVisiableHeight() > mMeasuredHeight && mState < STATE_REFRESHING) {
             setState(STATE_REFRESHING);
             isOnRefresh = true;
@@ -209,12 +208,12 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
 
     public void reset() {
         smoothScrollTo(0);
-        setState(STATE_NORMAL);
+        mState = STATE_NORMAL;
     }
 
     private void smoothScrollTo(int destHeight) {
         ValueAnimator animator = ValueAnimator.ofInt(getVisiableHeight(), destHeight);
-        animator.setDuration(300).start();
+        animator.setDuration(300);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

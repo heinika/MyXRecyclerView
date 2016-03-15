@@ -73,10 +73,6 @@ public class XRecyclerView extends RecyclerView {
         mRefreshHeader.setState(BaseRefreshHeader.STATE_REFRESHING);
     }
 
-    //Todo 结束刷新
-    public void stopRefresh(){
-        mRefreshHeader.reset();
-    }
 
     /**
      * 根据手机分辨率从dp转成px
@@ -99,11 +95,13 @@ public class XRecyclerView extends RecyclerView {
         View footView = mFootViews.get(0);
         if (footView instanceof LoadingMoreFooter) {
             ((LoadingMoreFooter) footView).setState(LoadingMoreFooter.STATE_COMPLETE);
+            this.smoothScrollBy(0,dip2px(mContext,-40));
         }else {
-            //Todo 应该增加回弹
             footView.setVisibility(View.GONE);
         }
     }
+
+
 
     public void refreshComplete() {
         mRefreshHeader.refreshComplate();
